@@ -1,0 +1,362 @@
+:root {
+    --c1: #CEB992;
+    --c2: #73937E;
+}
+
+body {
+    color: var(--c1) !important;
+    background-color: var(--c2) !important;
+    margin: auto;
+}
+
+button {
+    cursor: pointer;
+}
+
+a, a:hover {
+    text-decoration: none !important;
+}
+
+table, tr, td {
+    color: var(--c2) !important;
+    background-color: var(--c1) !important;
+    font-size: large;
+    border-bottom: 2px solid var(--c2) !important;
+}
+
+.card {
+    background-color: var(--c1) !important;
+    color: var(--c2) !important;
+}
+
+.admin-sidebar {
+    border-right: 2px solid var(--c2);
+}
+
+.profile .hills {
+    overflow-y: scroll;
+    max-height: 25vh;
+}
+
+.profile .btn {
+    background-color: var(--c1);
+    color: var(--c2);
+    border: none;
+}
+
+.profile .btn:hover {
+    background-color: var(--c2);
+    color: var(--c1);
+    border: 1px solid var(--c1);
+}
+
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    width: 100vw;
+}
+
+.register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.register .card {
+    background-color: var(--c1);
+    color: var(--c2);
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+.register .btn {
+    background-color: var(--c2);
+    color: var(--c1);
+    border: none;
+}
+
+.register .btn:hover {
+    background-color: var(--c1);
+    color: var(--c2);
+    border: 1px solid var(--c2);
+}
+
+.textarea {
+    background-color: var(--c2) !important;
+    color: var(--c1) !important;
+    border: 1px solid var(--c1) !important;
+}
+
+.textarea:focus {
+    border: 1px solid var(--c1) !important;
+    box-shadow: none !important;
+}
+
+.form-check-input {
+    background-color: var(--c2) !important;
+    color: var(--c1) !important;
+    border: 1px solid var(--c1) !important;
+}
+
+.form-check-input:focus {
+    box-shadow: none !important;
+}
+
+.searchBar {
+    display: flex;
+    right: 100px;
+    z-index: 900;
+    position: absolute;
+    padding: 10px;
+}
+
+.searchInput {
+    width: 25vw !important;
+    background-color: white;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 10vh;
+    background-color: var(--c2);
+    color: white;
+}
+
+.navbrand {
+    font-size: xx-large;
+    margin-left: 20px;
+    color: var(--c1) !important;
+    text-decoration: none !important;
+    font-weight: bolder;
+}
+
+.navbrand:hover {
+    cursor: pointer;
+}
+
+.navbar-item {
+    display: inline;
+    margin: 0 15px 0 5px;
+}
+
+.header {
+    background-image: url('./img/background.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 60vh;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    align-items: center;
+}
+
+.header-content {
+    background-color: var(--c1);
+    padding: 20px;
+}
+
+.header-content-heading {
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+.info {
+    display: flex;
+    height: 60vh;
+    background-color: var(--c2);
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer {
+    height: 50vh;
+    background-color: var(--c1);
+}
+
+.btn {
+    border-radius: 5px;
+    border: none;
+    font-size: 1.2em;
+    background-color: var(--c1);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.btn-profile {
+    width: 3em;
+    background-color: white;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.climbed {
+    max-height: 25vh;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.notClimbed {
+    max-height: 25vh;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.wrapper {
+    display: flex;
+    height: 75vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.discussion {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+#map {
+    z-index: -999;
+    overflow: hidden;
+}
+
+.clickMap {
+    overflow: hidden;
+    z-index: -999;
+}
+
+#reviews {
+    overflow-y: auto;
+    margin-bottom: 5em;
+}
+
+.bottomItems {
+    bottom: 0;
+    right: 0;
+    z-index: 999;
+    position: fixed;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: fit-content;
+    padding: 5px;
+    margin-right: 5px;
+    background-color: var(--c2);
+    border-radius: 10px 10px 0 0;
+}
+
+.bottomItems > * {
+    padding: 5px;
+}
+
+.border-line {
+    border: 1px solid var(--c1);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.badge1 {
+    background-color: var(--c2) !important;
+    color: var(--c1) !important;
+    border: 1px solid var(--c1) !important;
+}
+
+.btn1 {
+    background-color: var(--c1) !important;
+    color: var(--c2) !important;
+    border: none !important;
+}
+
+.btn1:hover {
+    background-color: var(--c2) !important;
+    color: var(--c1) !important;
+    border: 1px solid var(--c1) !important;
+}
+
+.btn2 {
+    background-color: var(--c2) !important;
+    color: var(--c1) !important;
+    border: none !important;
+}
+
+.btn2:hover {
+    background-color: var(--c1) !important;
+    color: var(--c2) !important;
+    border: 1px solid var(--c2) !important;
+}
+
+.btn1:disabled {
+    display: none !important;
+}
+
+.sidebar {
+    width: 25em;
+    height: 100vh;
+    z-index: 900;
+    position: absolute;
+    background: var(--c2);
+    left: 0;
+    padding: 10px;
+    overflow: auto;
+    max-height: 100vh;
+}
+
+.hill {
+    margin: 5px;
+}
+
+.card {
+    margin-top: 10px;
+    overflow-y: auto;
+}
+
+.btn-hoverable {
+    margin-top: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.2em;
+    background-color: var(--c1);
+    color: white;
+    width: 8em;
+    height: 2em;
+    transition: 0.5s;
+}
+
+.btn-hoverable:hover {
+    width: 9em;
+    height: 3em;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.input {
+    margin-top: 10px;
+}
+
+/* width */
+::-webkit-scrollbar {
+width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
