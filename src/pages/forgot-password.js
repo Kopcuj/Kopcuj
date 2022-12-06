@@ -17,7 +17,7 @@ function ForgotPassword() {
         event.preventDefault(); //prevent reload of page
 
         //post data to database
-        axios.post("/api/users/forgot-password", {email: email.current.value})
+        axios.post(process.env.REACT_APP_HOST + "/api/users/forgot-password", {email: email.current.value})
             .then(() => {
                 navigate("/login")
             })

@@ -7,7 +7,7 @@ const PrivateRoute = ({children}) => {
 	const [user, setUser] = useState();
 
 	const fetchUser = async () => {
-		const response = await axios.get(`/api/users/${Cookies.get('authToken')}`);
+		const response = await axios.get(process.env.REACT_APP_HOST + `/api/users/${Cookies.get('authToken')}`);
 		return response.data[0]
 	}
 

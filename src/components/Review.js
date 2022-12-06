@@ -9,12 +9,12 @@ const Review = (props) => {
     const [btnLike, setBtnLike] = useState(false);
 
     const getLikeCount = async () => {
-        const response = await axios.get(`/api/reviews/likeCount/${props.review.id}`);
+        const response = await axios.get(process.env.REACT_APP_HOST + `/api/reviews/likeCount/${props.review.id}`);
         return response.data[0].count;
     }
 
     const helpfulClicked = async () => {
-        await axios.post(`/api/reviews/like`, {
+        await axios.post(process.env.REACT_APP_HOST + `/api/reviews/like`, {
             user: props.user.id,
             review: props.review.id
         })

@@ -113,12 +113,12 @@ const FilterPage = () => {
     };
 
     const fetchRatings = async () => {
-        const response = await axios.get('/api/reviews/hills');
+        const response = await axios.get(process.env.REACT_APP_HOST + '/api/reviews/hills');
         return response.data;
     }
 
     const fetchHills = async () => {
-        const response = await axios.get(`/api/hills`);
+        const response = await axios.get(process.env.REACT_APP_HOST + `/api/hills`);
         return response.data;
     }
 

@@ -27,7 +27,7 @@ function ChangePassword() {
 
         if (data.pass === data.passAgain) {
             //post data to database
-            axios.post("/api/users/change-password", data)
+            axios.post(process.env.REACT_APP_HOST + "/api/users/change-password", data)
             .then(() => {
                 return navigate("/login");
             })

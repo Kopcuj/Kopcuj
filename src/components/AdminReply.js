@@ -8,12 +8,12 @@ const AdminReply = (props) => {
     const [loading, setLoading] = useState(true);
 
     const fetchDiscussion = async () => {
-        const response = await axios.get(`/api/discussions/${props.reply.discussion}`);
+        const response = await axios.get(process.env.REACT_APP_HOST + `/api/discussions/${props.reply.discussion}`);
         return response.data[0];
     }
 
     const fetchRating = async () => {
-        const response = await axios.get(`/api/discussions/reply/${props.reply.discussion}/rating`)
+        const response = await axios.get(process.env.REACT_APP_HOST + `/api/discussions/reply/${props.reply.discussion}/rating`)
         return response.data;
     }
 

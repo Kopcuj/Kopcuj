@@ -7,7 +7,7 @@ const Username = (props) => {
     const [loading, setLoading] = useState(true);
 
     const fetchUser = async () => {
-        const response = await axios.get(`/api/users/id/${props.user}`)
+        const response = await axios.get(process.env.REACT_APP_HOST + `/api/users/id/${props.user}`)
         return response.data[0];
     }
 

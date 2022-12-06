@@ -22,12 +22,12 @@ function DiscussionsPage() {
     }
 
     const fetchUser = async () => {
-        const response = await axios.get(`/api/users/${Cookies.get('authToken')}`);
+        const response = await axios.get(process.env.REACT_APP_HOST + `/api/users/${Cookies.get('authToken')}`);
         return response.data[0];
     }
 
     const fetchDiscussions = async () => {
-        const response = await axios.get(`/api/discussions/`);
+        const response = await axios.get(process.env.REACT_APP_HOST + `/api/discussions/`);
         return response.data;
     }
 
@@ -49,7 +49,7 @@ function DiscussionsPage() {
     }, [btn])
 
     const createDiscussion = async () => {
-        await axios.post("/api/discussions/create", {
+        await axios.post(process.env.REACT_APP_HOST + "/api/discussions/create", {
             id_user: user.id,
             subject: subject.current.value,
             text: text.current.value

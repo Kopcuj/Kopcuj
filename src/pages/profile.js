@@ -18,22 +18,22 @@ function ProfilePage() {
     const desc = useRef();
 
     const fetchUserClimbedHills = async () => {
-        const response = await axios.get(`/api/users/${Cookies.get('authToken')}/climbedHills`);
+        const response = await axios.get(process.env.REACT_APP_HOST + `/api/users/${Cookies.get('authToken')}/climbedHills`);
         return response.data;
     }
 
     const fetchUser = async () => {
-        const response = await axios.get('/api/users/' + Cookies.get('authToken'));
+        const response = await axios.get(process.env.REACT_APP_HOST + '/api/users/' + Cookies.get('authToken'));
         return response.data[0];
     }
 
     const fetchHills = async () => {
-        const response = await axios.get(`/api/hills/`);
+        const response = await axios.get(process.env.REACT_APP_HOST + `/api/hills/`);
         return response.data;
     }
 
     const changeDesc = async () => {
-        const response = await axios.post(`/api/users/description`, {
+        const response = await axios.post(process.env.REACT_APP_HOST + `/api/users/description`, {
             desc: desc.current.value,
             authToken: Cookies.get('authToken')
         });

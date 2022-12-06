@@ -66,7 +66,7 @@ function AdminPage() {
         };
 
         //post data to database
-        axios.post("/api/hills/create", data)
+        axios.post(process.env.REACT_APP_HOST + "/api/hills/create", data)
             .then(() => {
                 return navigate("/");
             })
@@ -77,28 +77,28 @@ function AdminPage() {
 
     //Fetch users from database
     const fetchUsers = async () => {
-        const response = await axios.get('/api/users/');
+        const response = await axios.get(process.env.REACT_APP_HOST + '/api/users/');
         return response.data;
     }
 
     //Fetch reviews from database
     const fetchReviews = async () => {
-        const response = await axios.get(`/api/reviews/`);
+        const response = await axios.get(process.env.REACT_APP_HOST + `/api/reviews/`);
         return response.data;
     }
 
     const fetchDiscussions = async () => {
-        const response = await axios.get(`/api/discussions`);
+        const response = await axios.get(process.env.REACT_APP_HOST + `/api/discussions`);
         return response.data;
     }
 
     const fetchReplies = async () => {
-        const response = await axios.get(`/api/discussions/replies`);
+        const response = await axios.get(process.env.REACT_APP_HOST + `/api/discussions/replies`);
         return response.data;
     }
 
     const fetchUsersClimbedHills = async () => {
-        const response = await axios.get(`/api/users/climbedHills`);
+        const response = await axios.get(process.env.REACT_APP_HOST + `/api/users/climbedHills`);
         return response.data;
     }
 
