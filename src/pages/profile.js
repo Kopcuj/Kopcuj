@@ -92,11 +92,12 @@ function ProfilePage() {
                 <h1 className={"d-inline-block"}>{user.login}</h1>&nbsp;<small
                 className={"d-inline-block"}>({user.name})</small>
 
-<form action={`${process.env.REACT_APP_HOST}/api/users/profile/upload`} method="POST" enctype="multipart/form-data">
-    <input type="file" name="image" />
-    <button type="submit">Upload</button>
-</form>
-            <img className='pfp' src={tryImage(`${process.env.REACT_APP_HOST}/api/users/upload/`, `${user.id}`)}></img>
+            <form action={`${process.env.REACT_APP_HOST}/api/users/profile/upload`} method="POST" enctype="multipart/form-data">
+                <input type="file" name="image" />
+                <button type="submit">Upload</button>
+            </form>
+            
+            <img className='pfp' src={`${process.env.REACT_APP_HOST}/upload/${user.id}.webp`}></img>
 
                 <div className={"mb-3 border-line"}>
                     <div style={{display: "flex", justifyContent: "space-between"}}>

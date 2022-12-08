@@ -23,7 +23,7 @@ const Username = (props) => {
 
     return (
         <>
-            <img className="pfp" src={tryImage(`${user.id}.webp`)}></img>&nbsp;
+            <img className="pfp" src={`${process.env.REACT_APP_HOST}/upload/${user.id}.webp`}></img>&nbsp;
             <b>{user.name || user.login}</b>&nbsp;
             {((user.isAdmin) ? <Badge pill bg="danger">Admin</Badge> : '')}&nbsp;
             {((user.isVerified) ? <Badge pill bg="info">Ověřen</Badge> : '')}

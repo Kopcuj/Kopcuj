@@ -129,7 +129,7 @@ function MapPage() {
 
                 <DropdownButton
                     drop={"up"}
-                    title={<img alt={"profile"} className='btn-profile' src={tryImage(`./img/`, `pfp-default.png`)}></img>}
+                    title={<img alt={"profile"} className='pfp' src={`${process.env.REACT_APP_HOST}/upload/${user.id}.webp`}></img>}
                     variant={""}
                 >
                     <Dropdown.Item eventKey="1" onClick={() => navigate("/profile")}>Profil</Dropdown.Item>
