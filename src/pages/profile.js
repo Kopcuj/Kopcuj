@@ -4,6 +4,7 @@ import axios from "axios";
 import Cookies from 'js-cookie';
 import {Alert, Button, Card, Form} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { tryImage } from '../helpers';
 
 axios.defaults.withCredentials = true;
 
@@ -90,6 +91,12 @@ function ProfilePage() {
             <div className={'container profile'}>
                 <h1 className={"d-inline-block"}>{user.login}</h1>&nbsp;<small
                 className={"d-inline-block"}>({user.name})</small>
+
+<form action={`${process.env.REACT_APP_HOST}/api/users/profile/upload`} method="POST" enctype="multipart/form-data">
+    <input type="file" name="image" />
+    <button type="submit">Upload</button>
+</form>
+            <img className='pfp' src={tryImage(`${process.env.REACT_APP_HOST}/api/users/upload/`, `${user.id}`)}></img>
 
                 <div className={"mb-3 border-line"}>
                     <div style={{display: "flex", justifyContent: "space-between"}}>
