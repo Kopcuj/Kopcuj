@@ -3,11 +3,11 @@ import '../App.css';
 import axios from "axios";
 import Map from '../components/Map'
 import Cookies from 'js-cookie';
-import pfp from '../img/pfp-default.png';
 import Searchbar from '../components/Searchbar';
 import Sidebar from '../components/Sidebar';
 import {Button, Dropdown, DropdownButton} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
+import { tryImage } from '../helpers';
 
 axios.defaults.withCredentials = true;
 
@@ -129,7 +129,7 @@ function MapPage() {
 
                 <DropdownButton
                     drop={"up"}
-                    title={<img alt={"profile"} className='btn-profile' src={pfp}></img>}
+                    title={<img alt={"profile"} className='btn-profile' src={tryImage(`./img/`, `pfp-default.png`)}></img>}
                     variant={""}
                 >
                     <Dropdown.Item eventKey="1" onClick={() => navigate("/profile")}>Profil</Dropdown.Item>

@@ -24,6 +24,12 @@ table, tr, td {
     border-bottom: 2px solid var(--c2) !important;
 }
 
+.pfp {
+    border-radius: 100%;
+    width: 2vw;
+    height: 2vw;
+}
+
 .card {
     background-color: var(--c1) !important;
     color: var(--c2) !important;

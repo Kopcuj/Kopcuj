@@ -3,16 +3,10 @@ import React, {useEffect, useState} from 'react';
 import {Badge, Button, Nav, Tab} from "react-bootstrap";
 import Reviews from "./Reviews";
 import Faults from "./Faults";
+import { tryImage } from "../helpers";
 
 const Sidebar = (props) => {
     const [hillAttributes, setHillAttributes] = useState();
-    const tryHillImage = () => {
-        try {
-            return require(`../img/hills/${processHillName(props.currentHill.name)}-${props.currentHill.elevation}.webp`);
-        } catch (err) {
-            return require(`../img/nohill.webp`);
-        }
-    };
 
     const addHill = async () => {
         await axios.post(process.env.REACT_APP_HOST + '/api/users/addClimbed', {
@@ -47,7 +41,7 @@ const Sidebar = (props) => {
                 <div style={{
                     width: "100%",
                     height: "200px",
-                    backgroundImage: `url(${tryHillImage()})`,
+                    backgroundImage: `url(${tryImage(`./img/hills/`, `${processHillName(props.currentHill.name)}-${props.currentHill.elevation}`)})`,   //Path must be relative to helpers.js file
                     backgroundSize: "cover",
                     backgroundPosition: "center"
                 }}></div>
