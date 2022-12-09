@@ -2,6 +2,7 @@ import {Badge} from "react-bootstrap";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import { tryImage } from "../helpers";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Username = (props) => {
     const [user, setUser] = useState();
@@ -24,9 +25,8 @@ const Username = (props) => {
     return (
         <>
             <img className="pfp" src={`${process.env.REACT_APP_HOST}/upload/${user.id}.webp`}></img>&nbsp;
-            <b>{user.name || user.login}</b>&nbsp;
-            {((user.isAdmin) ? <Badge pill bg="danger">Admin</Badge> : '')}&nbsp;
-            {((user.isVerified) ? <Badge pill bg="info">Ověřen</Badge> : '')}
+            <b style={{color: (user.isAdmin) ? "red" : "" }}>{user.name || user.login}</b>&nbsp;
+            {((user.isVerified) ? <FontAwesomeIcon style={{color: "dodgerblue"}} icon="fa-solid fa-check" /> : '')}
         </>
     )
 }
