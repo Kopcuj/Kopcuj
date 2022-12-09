@@ -4,7 +4,6 @@ import axios from "axios";
 import Cookies from 'js-cookie';
 import {Alert, Button, Card, Form} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { tryImage } from '../helpers';
 import LoadingScreen from '../components/LoadingScreen';
 
 axios.defaults.withCredentials = true;
@@ -55,10 +54,8 @@ function ProfilePage() {
     }
 
     useEffect(() => {
-        setLoading(true);
         fetchUser().then((res) => {
             setUser(res)
-            setLoading(false);
         })
 
     }, [descBtn])
@@ -80,7 +77,6 @@ function ProfilePage() {
     }, [])
 
     useEffect(() => {
-        setLoading(true);
         let ncHills = hills;
 
         climbedHills.forEach((hill) => {
@@ -88,7 +84,6 @@ function ProfilePage() {
         })
 
         setNotClimbedHills(ncHills);
-        setLoading(false);
     }, [climbedHills])
 
     if (loading) return <LoadingScreen />;
@@ -99,7 +94,7 @@ function ProfilePage() {
                 <h1 className={"d-inline-block"}>{user.login}</h1>&nbsp;<small
                 className={"d-inline-block"}>({user.name})</small>
 
-            <form action={`${process.env.REACT_APP_HOST}/api/users/profile/upload`} method="POST" enctype="multipart/form-data">
+            <form action={`${process.env.REACT_APP_HOST}/api/users/profile/upload`} method="POST">
                 <input type="file" name="image" />
                 <button type="submit">Upload</button>
             </form>

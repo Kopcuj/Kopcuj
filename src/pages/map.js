@@ -7,7 +7,7 @@ import Searchbar from '../components/Searchbar';
 import Sidebar from '../components/Sidebar';
 import {Button, Dropdown, DropdownButton} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
-import { tryImage } from '../helpers';
+import { getPfp, tryImage } from '../helpers';
 import LoadingScreen from '../components/LoadingScreen';
 
 axios.defaults.withCredentials = true;
@@ -130,7 +130,10 @@ function MapPage() {
 
                 <DropdownButton
                     drop={"up"}
-                    title={<img alt={"profile"} className='pfp' src={`${process.env.REACT_APP_HOST}/upload/${user.id}.webp`}></img>}
+                    title={<img alt={"profile"} className='pfp' src={`${process.env.REACT_APP_HOST}/upload/${user.id}.webp`} onError={({ currentTarget }) => {
+                        currentTarget.onerror = null; // prevents looping
+                        currentTarget.src=require(`../img/nohill.webp`);
+                      }}></img>}
                     variant={""}
                 >
                     <Dropdown.Item eventKey="1" onClick={() => navigate("/profile")}>Profil</Dropdown.Item>
