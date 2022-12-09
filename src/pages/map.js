@@ -8,6 +8,7 @@ import Sidebar from '../components/Sidebar';
 import {Button, Dropdown, DropdownButton} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 import { tryImage } from '../helpers';
+import LoadingScreen from '../components/LoadingScreen';
 
 axios.defaults.withCredentials = true;
 
@@ -148,7 +149,7 @@ function MapPage() {
             <div className={"clickMap"} onClick={mapClicked}>
                 {userClimbedHills !== undefined ?
                     <Map center={center} centerValue={centerValue} userClimbedHills={userClimbedHills}
-                         hills={hills}/> : "Loading map..."}
+                         hills={hills}/> : <LoadingScreen />}
             </div>
         </>
     )

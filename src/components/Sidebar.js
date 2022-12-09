@@ -4,6 +4,7 @@ import {Badge, Button, Nav, Tab} from "react-bootstrap";
 import Reviews from "./Reviews";
 import Faults from "./Faults";
 import { tryImage } from "../helpers";
+import LoadingScreen from "./LoadingScreen";
 
 const Sidebar = (props) => {
     const [hillAttributes, setHillAttributes] = useState();
@@ -28,7 +29,7 @@ const Sidebar = (props) => {
         })
     }, [])
 
-    if (hillAttributes === undefined) return "Loading";
+    if (hillAttributes === undefined) return <LoadingScreen />;
 
     return (
         <div className={'sidebar'}>

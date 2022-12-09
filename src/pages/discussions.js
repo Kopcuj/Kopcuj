@@ -5,6 +5,7 @@ import axios from "axios";
 import Cookies from 'js-cookie';
 import {Button, Form} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
+import LoadingScreen from '../components/LoadingScreen';
 
 function DiscussionsPage() {
     const [user, setUser] = useState([]);
@@ -85,7 +86,7 @@ function DiscussionsPage() {
 
                 <hr/>
 
-                {loading && <h2>Loading...</h2>}
+                {loading ? <LoadingScreen /> : ""}
 
                 {discussions?.map((discussion) => <Discussion key={discussion.id} discussion={discussion}/>)}
             </div>

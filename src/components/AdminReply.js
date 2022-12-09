@@ -1,6 +1,7 @@
 import {Card} from "react-bootstrap";
 import axios from "axios";
 import React, {useEffect, useState} from "react";
+import LoadingScreen from "./LoadingScreen";
 
 const AdminReply = (props) => {
     const [discussion, setDiscussion] = useState();
@@ -28,7 +29,7 @@ const AdminReply = (props) => {
         })
     }, [])
 
-    if (loading) return "Loading...";
+    if (loading) return <LoadingScreen />;
 
     return (
         <Card>

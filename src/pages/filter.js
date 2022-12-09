@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Button, Card, Form, Table} from "react-bootstrap";
+import LoadingScreen from "../components/LoadingScreen";
 
 function createData(id, name, rating, food, difficulty, parking, path, stroller) {
     return {id, name, rating, food, difficulty, parking, path, stroller};
@@ -241,7 +242,7 @@ const FilterPage = () => {
                         </Table>
                     </div>
                 </div>
-            </> : "Loading..."
+            </> : <LoadingScreen />
             }
 
         </>

@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import Reply from "../components/Reply";
 import {Button, Card, Form} from "react-bootstrap";
 import Username from "../components/Username";
+import LoadingScreen from "../components/LoadingScreen";
 
 const DiscussionPage = () => {
     const qs = require('query-string');
@@ -87,7 +88,7 @@ const DiscussionPage = () => {
                             <div className={"d-flex justify-content-between"}>
                                 <b>{discussion.subject}</b>
                                 <div>{discussion.user !== undefined ?
-                                    <Username user={discussion.user}></Username> : "Loading..."}</div>
+                                    <Username user={discussion.user}></Username> : <LoadingScreen />}</div>
                             </div>
                         </Card.Header>
                         <Card.Body>
@@ -106,7 +107,7 @@ const DiscussionPage = () => {
 
                     <hr/>
 
-                    {loading && <h2>Loading...</h2>}
+                    {loading && <LoadingScreen />}
 
                     <Form.Control placeholder={"Odpověď"} className={"textarea"} as="textarea" rows={5}
                                   ref={reply}></Form.Control>
@@ -114,7 +115,7 @@ const DiscussionPage = () => {
                         <Button className={"mt-3 btn1"} onClick={SendReply}>Odpovědět</Button>
                     </div>
                 </div>
-                : "Loading..."}
+                : <LoadingScreen />}
         </>
     )
 }

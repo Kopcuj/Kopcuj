@@ -3,6 +3,7 @@ import Review from "./Review";
 import React, {useEffect, useRef, useState} from "react";
 import Rating from '@mui/material/Rating';
 import axios from "axios";
+import LoadingScreen from "./LoadingScreen";
 
 const Reviews = (props) => {
     const [chbDifficulty, setChbDifficulty] = useState(false);
@@ -66,7 +67,7 @@ const Reviews = (props) => {
         setRating(getRating())
     }, [reviews])
 
-    if (loading) return "Loading...";
+    if (loading) return <LoadingScreen />;
 
     return (
         <>
@@ -99,7 +100,7 @@ const Reviews = (props) => {
             <div id='reviews'>
                 {reviews?.map((review) => ((review.text !== null) ?
                     <Review key={review.id} review={review} user={props.user}/>
-                    : 'Loading...'))}
+                    : <LoadingScreen />))}
             </div>
         </>
     )

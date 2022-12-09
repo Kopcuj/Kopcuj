@@ -3,6 +3,7 @@ import {Button, Card} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Username from "./Username";
 import axios from "axios";
+import LoadingScreen from "./LoadingScreen";
 
 const Review = (props) => {
     const [likeCount, setLikeCount] = useState(0);
@@ -34,7 +35,7 @@ const Review = (props) => {
         })
     }, [btnLike])
 
-    if (likeCount === undefined) return "Loading";
+    if (likeCount === undefined) return <LoadingScreen />;
 
     return (
         <div key={props.review.id}>

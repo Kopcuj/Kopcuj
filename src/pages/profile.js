@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 import {Alert, Button, Card, Form} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { tryImage } from '../helpers';
+import LoadingScreen from '../components/LoadingScreen';
 
 axios.defaults.withCredentials = true;
 
@@ -15,6 +16,7 @@ function ProfilePage() {
     const [notClimbedHills, setNotClimbedHills] = useState([]);
     const [descVisible, setDescVisible] = useState('none');
     const [descBtn, setDscBtn] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const desc = useRef();
 
@@ -53,14 +55,16 @@ function ProfilePage() {
     }
 
     useEffect(() => {
-
+        setLoading(true);
         fetchUser().then((res) => {
             setUser(res)
+            setLoading(false);
         })
 
     }, [descBtn])
 
     useEffect(() => {
+        setLoading(true);
         fetchUser().then((res) => {
             setUser(res)
         })
@@ -70,11 +74,13 @@ function ProfilePage() {
 
             fetchUserClimbedHills().then((res) => {
                 setClimbedHills(res);
+                setLoading(false);
             })
         })
     }, [])
 
     useEffect(() => {
+        setLoading(true);
         let ncHills = hills;
 
         climbedHills.forEach((hill) => {
@@ -82,9 +88,10 @@ function ProfilePage() {
         })
 
         setNotClimbedHills(ncHills);
+        setLoading(false);
     }, [climbedHills])
 
-    if (user === undefined) return "Loading"
+    if (loading) return <LoadingScreen />;
 
     return (
         <>

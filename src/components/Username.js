@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import { tryImage } from "../helpers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import LoadingScreen from "./LoadingScreen";
 
 const Username = (props) => {
     const [user, setUser] = useState();
@@ -20,7 +21,7 @@ const Username = (props) => {
         })
     }, [])
 
-    if (loading) return <p>...</p>
+    if (loading) return <LoadingScreen />
 
     return (
         <>
