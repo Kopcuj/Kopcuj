@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 import {Alert, Button, Card, Form} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import LoadingScreen from '../components/LoadingScreen';
+import { fetchHills, fetchUser, fetchUserClimbedHills } from '../helpers';
 
 axios.defaults.withCredentials = true;
 
@@ -18,21 +19,6 @@ function ProfilePage() {
     const [loading, setLoading] = useState(true);
 
     const desc = useRef();
-
-    const fetchUserClimbedHills = async () => {
-        const response = await axios.get(process.env.REACT_APP_HOST + `/api/users/${Cookies.get('authToken')}/climbedHills`);
-        return response.data;
-    }
-
-    const fetchUser = async () => {
-        const response = await axios.get(process.env.REACT_APP_HOST + '/api/users/' + Cookies.get('authToken'));
-        return response.data[0];
-    }
-
-    const fetchHills = async () => {
-        const response = await axios.get(process.env.REACT_APP_HOST + `/api/hills/`);
-        return response.data;
-    }
 
     const changeDesc = async () => {
         const response = await axios.post(process.env.REACT_APP_HOST + `/api/users/description`, {

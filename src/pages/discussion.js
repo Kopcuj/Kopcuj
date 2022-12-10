@@ -5,6 +5,7 @@ import Reply from "../components/Reply";
 import {Button, Card, Form} from "react-bootstrap";
 import Username from "../components/Username";
 import LoadingScreen from "../components/LoadingScreen";
+import { fetchUser } from "../helpers";
 
 const DiscussionPage = () => {
     const qs = require('query-string');
@@ -21,11 +22,6 @@ const DiscussionPage = () => {
     let authToken = Cookies.get('authToken');
     if (authToken === '' || authToken === undefined || authToken === null) {
         document.location.replace(document.location + 'login');
-    }
-
-    const fetchUser = async () => {
-        const response = await axios.get(process.env.REACT_APP_HOST + `/api/users/${Cookies.get('authToken')}`);
-        return response.data[0];
     }
 
     const fetchDiscussion = async () => {

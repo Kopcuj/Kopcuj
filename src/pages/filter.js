@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Button, Card, Form, Table} from "react-bootstrap";
 import LoadingScreen from "../components/LoadingScreen";
+import { fetchHills } from "../helpers";
 
 function createData(id, name, rating, food, difficulty, parking, path, stroller) {
     return {id, name, rating, food, difficulty, parking, path, stroller};
@@ -115,11 +116,6 @@ const FilterPage = () => {
 
     const fetchRatings = async () => {
         const response = await axios.get(process.env.REACT_APP_HOST + '/api/reviews/hills');
-        return response.data;
-    }
-
-    const fetchHills = async () => {
-        const response = await axios.get(process.env.REACT_APP_HOST + `/api/hills`);
         return response.data;
     }
 

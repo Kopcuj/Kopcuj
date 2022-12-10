@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import { getPfp, tryImage } from "../helpers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import LoadingScreen from "./LoadingScreen";
 

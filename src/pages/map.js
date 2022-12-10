@@ -7,7 +7,7 @@ import Searchbar from '../components/Searchbar';
 import Sidebar from '../components/Sidebar';
 import {Button, Dropdown, DropdownButton} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
-import { getPfp, tryImage } from '../helpers';
+import { fetchHills, fetchUser, fetchUserClimbedHills } from '../helpers';
 import LoadingScreen from '../components/LoadingScreen';
 
 axios.defaults.withCredentials = true;
@@ -41,21 +41,6 @@ function MapPage() {
     }
 
     //Functions
-    const fetchUser = async () => {
-        const response = await axios.get(process.env.REACT_APP_HOST + `/api/users/${Cookies.get('authToken')}`);
-        return response.data[0];
-    }
-
-    const fetchUserClimbedHills = async () => {
-        const response = await axios.get(process.env.REACT_APP_HOST + `/api/users/${Cookies.get('authToken')}/climbedHills`);
-        return response.data;
-    }
-
-    const fetchHills = async () => {
-        const response = await axios.get(process.env.REACT_APP_HOST + '/api/hills/');
-        return response.data;
-    }
-
     const logout = () => {
         Cookies.remove("authToken");
         navigate("/login");
