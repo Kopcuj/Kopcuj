@@ -30,6 +30,14 @@ table, tr, td {
     height: 2vw;
 }
 
+.profile-image {
+    width: 5vw; 
+    height: 5vw; 
+    object-fit: cover;
+    object-position: 25% 25%; 
+    border-radius: 100%;
+}
+
 .card {
     background-color: var(--c1) !important;
     color: var(--c2) !important;

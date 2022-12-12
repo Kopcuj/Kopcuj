@@ -6,6 +6,8 @@ import {Alert, Button, Card, Form} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import LoadingScreen from '../components/LoadingScreen';
 import { fetchHills, fetchUser, fetchUserClimbedHills } from '../helpers';
+import EditProfile from '../components/EditProfile';
+
 
 axios.defaults.withCredentials = true;
 
@@ -77,15 +79,17 @@ function ProfilePage() {
     return (
         <>
             <div className={'container profile'}>
-                <h1 className={"d-inline-block"}>{user.login}</h1>&nbsp;<small
-                className={"d-inline-block"}>({user.name})</small>
+                <div className='d-flex mt-5 align-items-center'>
+                    <img className='profile-image' src={`${process.env.REACT_APP_HOST}/upload/${user.id}.webp`}></img>&nbsp;
+                    <h1 className={"d-inline-block"}>{user.login}</h1>&nbsp;<small className={"d-inline-block"}>({user.name})</small>
+                </div>
 
             <form action={`${process.env.REACT_APP_HOST}/api/users/profile/upload`} method="POST">
                 <input type="file" name="image" />
                 <button type="submit">Upload</button>
             </form>
             
-            <img className='pfp' src={`${process.env.REACT_APP_HOST}/upload/${user.id}.webp`}></img>
+            <EditProfile></EditProfile>
 
                 <div className={"mb-3 border-line"}>
                     <div style={{display: "flex", justifyContent: "space-between"}}>
