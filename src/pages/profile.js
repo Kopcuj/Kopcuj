@@ -88,7 +88,7 @@ function ProfilePage() {
                 <input type="file" name="image" />
                 <button type="submit">Upload</button>
             </form>
-            
+
             <EditProfile></EditProfile>
 
                 <div className={"mb-3 border-line"}>
