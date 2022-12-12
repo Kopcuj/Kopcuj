@@ -1,7 +1,6 @@
 import {Button, Collapse, Dropdown, DropdownButton, Form, Modal} from "react-bootstrap";
 import React, {useRef, useState} from "react";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
 
 const AdminRow = (props) => {
     const [desc, setDesc] = useState(false);
@@ -18,14 +17,13 @@ const AdminRow = (props) => {
   const [editIsAdmin, setEditIsAdmin] = useState(false);
   const [editIsVerified, setEditIsVerified] = useState(false);
   
-  const navigate = useNavigate();
-
   const handleClose = () => setShow(false);
   const handleShow = () => {
     setShow(true);
   }
 
 const handleEdit = (event) => {
+    console.log(editIsVerified);
     event.preventDefault(); //prevent reload of page
     const data = {
         userId: props.row.id_user,
@@ -50,7 +48,7 @@ const handleEdit = (event) => {
 
     return (
         <>
-        <Modal show={show} onHide={handleClose}>
+        <Modal key={props.row.id_user + 'modal'} show={show} onHide={handleClose}>
             <Modal.Header closeButton>
                 <Modal.Title>Upravit {props.row.login}</Modal.Title>
             </Modal.Header>
@@ -59,12 +57,12 @@ const handleEdit = (event) => {
                 <Form>
                     <Form.Group className={"mb-3"}>
                         <Form.Label className={"mb-0"} htmlFor="username">Name</Form.Label><br/>
-                        <Form.Control className={"textarea"} ref={editName} type="text" name={"username"} placeholder={"name"}/>
+                        <Form.Control className={"textarea"} ref={editName} type="text" name={"username"} placeholder={props.row.name}/>
                     </Form.Group>
 
                     <Form.Group className={"mb-3"}>
                         <Form.Label className={"mb-0"} htmlFor="username">Description</Form.Label><br/>
-                        <Form.Control className={"textarea"} ref={editDesc} type="text" name={"username"} placeholder={"description"}/>
+                        <Form.Control className={"textarea"} ref={editDesc} type="text" name={"username"} placeholder={props.row.desc}/>
                     </Form.Group>
 
                     <Form.Group className={"mb-3"}>
