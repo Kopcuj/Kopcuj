@@ -205,6 +205,7 @@ function AdminPage() {
                                             <td>Last Login</td>
                                             <td>Admin</td>
                                             <td>Verified</td>
+                                            <td>CRUD</td>
                                         </tr>
                                         </thead>
                                         <tbody>
