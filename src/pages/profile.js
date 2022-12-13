@@ -16,39 +16,10 @@ function ProfilePage() {
     const [hills, getHills] = useState([]);
     const [climbedHills, setClimbedHills] = useState([]);
     const [notClimbedHills, setNotClimbedHills] = useState([]);
-    const [descVisible, setDescVisible] = useState('none');
-    const [descBtn, setDscBtn] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [edit, setEdit] = useState(false);
 
-    const desc = useRef();
-
-    const changeDesc = async () => {
-        const response = await axios.post(process.env.REACT_APP_HOST + `/api/users/description`, {
-            desc: desc.current.value,
-            authToken: Cookies.get('authToken')
-        });
-
-        setDscBtn(!descBtn);
-        setDescVisible('none');
-
-        return response.data;
-    }
-
-    const handleDesc = () => {
-        if (descVisible === 'none')
-            setDescVisible('block')
-        else
-            setDescVisible('none')
-    }
-
-    useEffect(() => {
-        fetchUser().then((res) => {
-            setUser(res)
-        })
-
-    }, [descBtn])
-
-    useEffect(() => {
+    const fetchData = () => {
         setLoading(true);
         fetchUser().then((res) => {
             setUser(res)
@@ -62,7 +33,15 @@ function ProfilePage() {
                 setLoading(false);
             })
         })
+    }
+
+    useEffect(() => {
+        fetchData();
     }, [])
+
+    useEffect(() => {
+        fetchData();
+    }, [edit])
 
     useEffect(() => {
         let ncHills = hills;
@@ -79,31 +58,21 @@ function ProfilePage() {
     return (
         <>
             <div className={'container profile'}>
-                <div className='d-flex mt-5 align-items-center'>
-                    <img className='profile-image' src={`${process.env.REACT_APP_HOST}/upload/${user.id}.webp`}></img>&nbsp;
-                    <h1 className={"d-inline-block"}>{user.login}</h1>&nbsp;<small className={"d-inline-block"}>({user.name})</small>
+                <div className={'d-flex justify-content-between align-items-center mb-3'}>
+                    <div className='d-flex mt-5 align-items-center'>
+                        <img className='profile-image' src={`${process.env.REACT_APP_HOST}/upload/${user.id}.webp`}></img>&nbsp;
+                        <h1 className={"d-inline-block"}>{user.login}</h1>&nbsp;<small className={"d-inline-block"}>({user.name})</small>
+                    </div>
+
+                    <EditProfile setEdit={setEdit} edit={edit} user={user}></EditProfile>
                 </div>
-
-            <form action={`${process.env.REACT_APP_HOST}/api/users/profile/upload`} method="POST">
-                <input type="file" name="image" />
-                <button type="submit">Upload</button>
-            </form>
-
-            <EditProfile></EditProfile>
 
                 <div className={"mb-3 border-line"}>
                     <div style={{display: "flex", justifyContent: "space-between"}}>
                         <Card.Text>
                             {user.description === null ? "Popisek..." : user.description}
                         </Card.Text>
-                        <div onClick={handleDesc}><FontAwesomeIcon icon="fa-solid fa-pen"/></div>
                     </div>
-                </div>
-
-                <div className={"mb-3"} style={{display: descVisible}}>
-                    <Form.Control as={'textarea'} ref={desc} className={"textarea1"}></Form.Control>
-                    <div className={"w-100 mt-1"} style={{display: "flex", justifyContent: "flex-end"}}><Button
-                        onClick={changeDesc} className={'btn1'}>Změnit</Button></div>
                 </div>
 
                 <Card className={"mb-3"}>

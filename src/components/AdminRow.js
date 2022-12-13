@@ -23,7 +23,6 @@ const AdminRow = (props) => {
   }
 
 const handleEdit = (event) => {
-    console.log(editIsVerified);
     event.preventDefault(); //prevent reload of page
     const data = {
         userId: props.row.id_user,
@@ -32,8 +31,6 @@ const handleEdit = (event) => {
         isAdmin: editIsAdmin,
         isVerified: editIsVerified
     };
-
-    console.log(editIsVerified);
 
     //post data to database
     axios.post(process.env.REACT_APP_HOST + "/api/users/update", data)
