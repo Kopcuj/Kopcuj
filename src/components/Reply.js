@@ -9,13 +9,13 @@ const Reply = (props) => {
     const [btn, setBtn] = useState(false);
 
     const fetchRating = async () => {
-        const response = await axios.get(process.env.REACT_APP_HOST + `/api/discussions/reply/${props.discussion.id}/rating`)
+        const response = await axios.get(process.env.REACT_APP_HOST + `/api/discussions/reply/${props.reply.id}/rating`)
         return response.data;
     }
 
     const SendUpvote = async () => {
         await axios.post(process.env.REACT_APP_HOST + '/api/discussions/reply/upvote', {
-            discussion: props.discussion.id,
+            reply: props.reply.id,
             user: props.user.id,
         }).then(() => {
             setBtn(!btn)
@@ -24,7 +24,7 @@ const Reply = (props) => {
 
     const SendDownvote = async () => {
         await axios.post(process.env.REACT_APP_HOST + '/api/discussions/reply/downvote', {
-            discussion: props.discussion.id,
+            reply: props.reply.id,
             user: props.user.id,
         }).then(() => {
             setBtn(!btn)
