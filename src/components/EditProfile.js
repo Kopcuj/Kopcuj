@@ -47,12 +47,12 @@ const EditProfile = (props) => {
                     <Form>
                         <Form.Group className={"mb-3"}>
                             <Form.Label className={"mb-0"} htmlFor="username">Jméno</Form.Label><br/>
-                            <Form.Control ref={name} type="text" name={"username"} placeholder={"Jméno"}/>
+                            <Form.Control className={'textarea'} ref={name} type="text" name={"username"} placeholder={"Jméno"}/>
                         </Form.Group>
 
                         <Form.Group className={"mb-3"}>
                             <Form.Label className={"mb-0"} htmlFor="username">Popisek</Form.Label><br/>
-                            <Form.Control ref={desc} rows={5} type="text" name={"username"} placeholder={"Popisek"}/>
+                            <Form.Control className={'textarea'} as={'textarea'} ref={desc} rows={5} type="text" name={"username"} placeholder={"Popisek"}/>
                         </Form.Group>
 
                         <Form.Group className={"mb-3"}>
@@ -60,15 +60,14 @@ const EditProfile = (props) => {
                         </Form.Group>
                     </Form>
 
-                    <Form action={`${process.env.REACT_APP_HOST}/api/users/profile/upload`} method="POST" enctype="multipart/form-data">
+                    <Form action={`${process.env.REACT_APP_HOST}/api/users/profile/upload`} method="POST">
                         <input type="file" name="image" />
                         <button type="submit">Upload</button>
                     </Form>
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>Zavřít</Button>
-                    <Button type={'submit'} variant="primary" onClick={handleEdit}>Uložit</Button>
+                    <Button type={'submit'} className={'btn2'} variant="primary" onClick={handleEdit}>Uložit</Button>
                 </Modal.Footer>
             </Modal>
         </div>
