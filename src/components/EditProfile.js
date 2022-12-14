@@ -2,6 +2,7 @@ import React, {useRef, useState} from "react";
 import {Button, Form} from "react-bootstrap";
 import { Modal } from "react-bootstrap";
 import axios from "axios";
+import UploadPicture from "./UploadPicture";
 
 const EditProfile = (props) => {
     const [show, setShow] = useState(false);
@@ -18,7 +19,7 @@ const EditProfile = (props) => {
         const data = {
             userId: props.user.id,
             name: (name.current.value) ? name.current.value : props.user.name,
-            description: (desc.current.value) ? desc.current.value : props.user.desc,
+            description: (desc.current.value) ? desc.current.value : props.user.description,
             isVerified: props.user.isVerified,
             isAdmin: props.user.isAdmin
         };
@@ -55,15 +56,12 @@ const EditProfile = (props) => {
                             <Form.Control className={'textarea'} as={'textarea'} ref={desc} rows={5} type="text" name={"username"} placeholder={"Popisek"}/>
                         </Form.Group>
 
-                        <Form.Group className={"mb-3"}>
-                            <Form.Label className={"mb-0"} htmlFor="username">Profilový obrázek</Form.Label><br/>
+                        <Form.Group className={"mb-1"}>
+                            <Form.Label className={"mb-0"}>Profilový obrázek</Form.Label><br/>
                         </Form.Group>
                     </Form>
 
-                    <Form action={`${process.env.REACT_APP_HOST}/api/users/profile/upload`} method="POST">
-                        <input type="file" name="image" />
-                        <button type="submit">Upload</button>
-                    </Form>
+                    <UploadPicture user={props.user} />
                 </Modal.Body>
 
                 <Modal.Footer>
