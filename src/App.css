@@ -25,27 +25,22 @@ table, tr, td {
 }
 
 .pfp {
+    object-fit: cover;
+    object-position: 50% 25%;
+    border-radius: 100%;
     width: 2vw;
     height: 2vw;
-    object-fit: cover;
-    object-position: 25% 25%;
-    border-radius: 100%;
 }
 
 .profile-image {
     width: 5vw; 
     height: 5vw; 
     object-fit: cover;
-    object-position: 25% 25%; 
+    object-position: 50% 25%;
     border-radius: 100%;
 }
 
 .card {
-    background-color: var(--c1) !important;
-    color: var(--c2) !important;
-}
-
-.modal-content {
     background-color: var(--c1) !important;
     color: var(--c2) !important;
 }

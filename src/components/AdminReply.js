@@ -14,7 +14,7 @@ const AdminReply = (props) => {
     }
 
     const fetchRating = async () => {
-        const response = await axios.get(process.env.REACT_APP_HOST + `/api/discussions/reply/${props.reply.discussion}/rating`)
+        const response = await axios.get(process.env.REACT_APP_HOST + `/api/discussions/reply/${props.reply.id}/rating`)
         return response.data;
     }
 

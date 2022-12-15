@@ -60,7 +60,10 @@ function ProfilePage() {
             <div className={'container profile'}>
                 <div className={'d-flex justify-content-between align-items-center mb-3'}>
                     <div className='d-flex mt-5 align-items-center'>
-                        <img className='profile-image' src={`${process.env.REACT_APP_HOST}/upload/${user.id}.webp`}></img>&nbsp;
+                        <img className='profile-image' src={`${process.env.REACT_APP_HOST}/upload/${user.id}.webp`} onError={({ currentTarget }) => {
+                            currentTarget.onerror = null; // prevents looping
+                            currentTarget.src=require(`../img/nohill.webp`);
+                        }}></img>&nbsp;
                         <h1 className={"d-inline-block"}>{user.login}</h1>&nbsp;<small className={"d-inline-block"}>({user.name})</small>
                     </div>
 
