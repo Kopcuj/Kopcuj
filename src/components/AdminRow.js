@@ -38,9 +38,16 @@ const handleEdit = (event) => {
             setShow(false);
             document.location.reload();
         })
-        .catch(err => {
-            console.log("Error in register user!\n" + err);
-        });
+}
+
+const handleDelete = (event) => {
+      event.preventDefault();
+
+      axios.post(`${process.env.REACT_APP_HOST}/api/users/delete`, {userId: props.row.id_user})
+          .then(() => {
+          setShow(false);
+          document.location.reload();
+      })
 }
 
     return (
@@ -173,7 +180,7 @@ const handleEdit = (event) => {
                     variant={""}
                 >
                     <Dropdown.Item eventKey="1" onClick={handleShow}>Upravit</Dropdown.Item>
-                    <Dropdown.Item eventKey="2">Smazat</Dropdown.Item>
+                    <Dropdown.Item eventKey="2" onClick={handleDelete}>Smazat</Dropdown.Item>
                     <Dropdown.Item eventKey="3">Ban</Dropdown.Item>
                 </DropdownButton>
             </td>
