@@ -1,6 +1,7 @@
 import {Card} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import React from "react";
+import EditReview from "./EditReview";
 
 function ellipsify(str) {
     if (str.length > 10) {
@@ -28,6 +29,8 @@ const AdminReview = (props) => {
                             <FontAwesomeIcon icon="fa-solid fa-star" key={i}/>
                         )}
                     </div>
+
+                    <EditReview review={props.review}/>
                 </div>
                 <div>
                     {ellipsify(props.review.text)}
